@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  go-postgres:
+    image: postgres:11
+    environment:
+      POSTGRES_PASSWORD: "golang"
+      POSTGRES_USER: "golang"
+      POSTGRES_DB: "golang"
+    ports:
+      - "5432:5432"
+    volumes:
+      - /containers/data/go-postgres:/var/lib/postgresql/data
+    networks:
+      - go-network
+
+  go-pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "lucasborges@deckdesign.com.br"
+      PGADMIN_DEFAULT_PASSWORD: "yourpass"
+    ports:
+      - "16543:80"
+    depends_on:
+      - go-postgres
+    networks:
+      - go-network
+
+networks:
+  go-network:
+    driver: bridge
