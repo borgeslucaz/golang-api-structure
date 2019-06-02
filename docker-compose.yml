@@ -17,7 +17,7 @@ services:
   go-pgadmin:
     image: dpage/pgadmin4
     environment:
-      PGADMIN_DEFAULT_EMAIL: "lucasborges@deckdesign.com.br"
+      PGADMIN_DEFAULT_EMAIL: "mail@mail.com.br"
       PGADMIN_DEFAULT_PASSWORD: "yourpass"
     ports:
       - "16543:80"
